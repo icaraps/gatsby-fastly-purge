@@ -1,0 +1,20 @@
+{
+  "name": "gatsby-fastly-purge-action",
+  "private": false,
+  "version": "1.0.0",
+  "description": "Purge Gatsby public HTML and JSON files from the Fastly cache",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.js --license licenses.txt"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "fastly-purge": "^1.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.28.1",
+    "webpack": "^5.30.0"
+  }
+}
