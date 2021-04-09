@@ -24,8 +24,7 @@ const FastlyPurge = require('fastly-purge');
     // Build complete url and purge
     const process = async (filePath = '') => {
       const fastlyURL = `${FASTLY_URL.endsWith('/') ? FASTLY_URL : `${FASTLY_URL}/`}${filePath}`;
-      const {origin, pathname} = new URL(fastlyURL);
-      console.log(`Purging: ${origin}/‎${pathname.slice(1)}`);
+      console.log(`Purging: ${fastlyURL}`);
       console.log(await purgeURL(fastlyURL));
     };
     
