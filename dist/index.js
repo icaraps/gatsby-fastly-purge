@@ -35608,7 +35608,13 @@ const FastlyPurge = __nccwpck_require__(7784);
     const process = async (filePath = '') => {
       const fastlyURL = `${FASTLY_URL.endsWith('/') ? FASTLY_URL : `${FASTLY_URL}/`}${filePath}`;
       console.log(`Purging: ${fastlyURL}`);
-      console.log(await purgeURL(fastlyURL));
+      try {
+        console.log(await purgeURL(fastlyURL));
+      }
+      catch (e) {
+        console.warn(`Failed purging: ${fastlyURL}`);
+        console.error(e);
+      }
     };
     
     // Process base path
