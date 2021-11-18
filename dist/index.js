@@ -35595,9 +35595,9 @@ const FastlyPurge = __nccwpck_require__(7784);
     const globber = await glob.create(patterns.join('\n'));
     
     // Wrap purge.url() into a Promise
-    const purgeURL = (url) => {
+    const purgeURL = (url, FASTLY_TOKEN) => {
       return new Promise((res, rej) => {
-        purge.url(url, (err, result) => {
+        purge.url(url, {apiKey: FASTLY_TOKEN}, (err, result) => {
           if (result) res(result);
           if (err) rej(err);
         });
