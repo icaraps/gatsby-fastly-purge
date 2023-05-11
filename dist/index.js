@@ -35591,7 +35591,7 @@ const FastlyPurge = __nccwpck_require__(7784);
     const FASTLY_URL = core.getInput('fastly-url');
     
     const purge = new FastlyPurge(FASTLY_TOKEN);
-    const patterns = ['public/**/*.json', 'public/**/*.html'];
+    const patterns = ['public/**/*.json', 'public/**/*.html', 'public/**/*.js', 'public/**/*.js.map', 'public/**/*.webp', 'public/**/*.svg', 'public/**/*.png', 'public/**/*.jpeg', 'public/**/*.jpg', 'public/**/*.gif'];
     const globber = await glob.create(patterns.join('\n'));
     
     // Wrap purge.url() into a Promise
@@ -35620,7 +35620,7 @@ const FastlyPurge = __nccwpck_require__(7784);
     // Process base path
     await process();
   
-    // Process HTML and JSON file paths
+    // Process HTML, JS, JSON, and other typical file paths
     for await (const file of globber.globGenerator()) {
       await process(file.substr(file.indexOf('/public/') + 8));
     }
